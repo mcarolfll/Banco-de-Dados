@@ -56,26 +56,28 @@ values('Lembra+'),
 
 select * from projeto;
 
-insert into cliente (nome, telefone, endereco)
-values('Lyra','9586-4845','BBB'),
-('Zephyra','7548-2456','AAA'),
+insert into cliente (nome, telefone,cpf)
+values('Lyra','8466-4845','BBB'),
+('Zephyra','7548-2406','AAA'),
 ('Elara','5484-6892','CCC'),
 ('Lunara','1258-9543','SSS'),
 ('Seraphina','9586-4245','GGG'),
-('Valora','9586-4245','RRR'),
-('Astraea','9586-4245','UUU'),
-('Nyx','9586-4245','LLL'),
-('Elysia','9586-4245','MMM'),
-('Orion','9586-4245','EEE'),
+('Valora','9326-4245','RRR'),
+('Astraea','5586-4245','UUU'),
+('Nyx','8586-4245','LLL'),
+('Elysia','6286-4245','MMM'),
+('Orion','7886-4245','EEE'),
 ('Zephyr','7548-2456','PPP'),
 ('Caspian','5484-6892','DDD'),
 ('Phoenix','1258-9543','HHH'),
-('Rhys','9586-4245','WWW'),
-('Talon','9586-4245','OOO'),
-('Xander','9586-4245','III'),
-('Jaxon','9586-4245','VVV'),
-('Kael','9586-4245','NNN'),
-('Lucian','9586-4245','XXX'),
-('João','9586-4245','FFF');
+('Rhys','7586-4245','WWW'),
+('Talon','9556-4245','OOO'),
+('Xander','69386-4245','III'),
+('Jaxon','95816-4245','VVV'),
+('Kael','9511-4245','NNN'),
+('Lucian','3386-4245','XXX'),
+('João','7786-4245','FFF');
 
 select * from cliente;
+
+
