@@ -1,0 +1,81 @@
+create database BdSQL;
+drop database bdsql;
+use Bdsql;
+
+create table funcionario(
+id_funcionario int primary key auto_increment,
+nome varchar(50),
+telefone char(15),
+salario char(255)
+);
+
+create table departamento(
+id_departamento int primary key auto_increment,
+nome_depart varchar (30),
+local_depart varchar (50)
+);
+
+create table projeto(
+id_projeto int primary key auto_increment,
+nome_projet varchar (30)
+);
+
+create table cliente(
+id_cliente int primary key auto_increment,
+nome varchar (30),
+telefone char (20),
+endereco char (255)
+);
+
+insert into funcionario (nome, telefone, salario)
+values('Carol','9586-4245','1.900'),
+('Duda','7548-2456','1.600'),
+('Gabi','5484-6892','1.700'),
+('Geovana','1258-9543','1.800'),
+('Thays','9586-4245','1.000'),
+('Lucas','9586-4245','1.500'),
+('Italo','9586-4245','1.200'),
+('Adam','9586-4245','1.600'),
+('Arthur','9586-4245','1.700'),
+('João','9586-4245','1.300');
+
+select * from funcionario;
+
+insert into departamento (nome_depart, local_depart)
+values('Inovação e Estratégia','Sala de Criatividade'),
+('Marketing','Espaço de Conexão'),
+('Logística','Centro de Distribuição');
+
+select * from departamento;
+
+insert into projeto (nome_projet)
+values('Lembra+'),
+('Calmind'),
+('Rastreamento'),
+('Terra Segura');
+
+select * from projeto;
+
+insert into cliente (nome, telefone, endereco)
+values('Lyra','9586-4845','BBB'),
+('Zephyra','7548-2456','AAA'),
+('Elara','5484-6892','CCC'),
+('Lunara','1258-9543','SSS'),
+('Seraphina','9586-4245','GGG'),
+('Valora','9586-4245','RRR'),
+('Astraea','9586-4245','UUU'),
+('Nyx','9586-4245','LLL'),
+('Elysia','9586-4245','MMM'),
+('Orion','9586-4245','EEE'),
+('Zephyr','7548-2456','PPP'),
+('Caspian','5484-6892','DDD'),
+('Phoenix','1258-9543','HHH'),
+('Rhys','9586-4245','WWW'),
+('Talon','9586-4245','OOO'),
+('Xander','9586-4245','III'),
+('Jaxon','9586-4245','VVV'),
+('Kael','9586-4245','NNN'),
+('Lucian','9586-4245','XXX'),
+('João','9586-4245','FFF');
+
+select * from cliente;
