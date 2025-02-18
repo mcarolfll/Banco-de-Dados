@@ -1,1 +1,45 @@
+create database banco;
 
+use banco;
+
+create table funcionario(
+id_func int primary key auto_increment,
+nome varchar(50),
+telefone char(15) unique not null,
+salario varchar (255),
+cpf varchar(20)unique not null
+);
+
+INSERT INTO funcionario (nome, telefone, salario, cpf)
+VALUES 
+  ('Carol', '8786-4288', '1.900', '12345678901'),
+  ('Duda', '7548-2456', '1.600', '23456789012'),
+  ('Gabi', '5484-6892', '1.700', '34567890123'),
+  ('Geovana', '1258-9543', '1.800', '45678901234'),
+  ('Thays', '9586-0245', '1.000', '56789012345'),
+  ('Lucas', '586-4285', '1.500', '67890123456'),
+  ('Italo', '5586-9245', '1.200', '78901234567'),
+  ('Adam', '9599-25245', '1.600', '89012345678'),
+  ('Arthur', '9556-8245', '1.700', '90123456789'),
+  ('João', '9586-4005', '1.300', '01234567890');
+
+select * from funcionario;
+
+
+create table departamento(
+id_depart int primary key auto_increment
+);
+insert into departamento(id_func)
+values(1);
+alter table departamento add nome_depart char(3);
+insert into departamento(id_func, nome_depart)
+values(3,'22');
+select * from departamento;
+
+alter table trabalho add id_pessoal int;
+
+alter table trabalho add constraint
+id_pessoal foreign key(id_pessoal)
+references Pessoal(id_pessoal);
+
+select * from trabalho;
