@@ -19,3 +19,54 @@ UPDATE Pessoal
 SET cpf = "002" WHERE id_pessoal = 2;
 
 select cpf from pessoal;
+
+
+--------- atividade ---------
+
+insert into projeto (nome_projet)
+values('Lembra+'),
+('Calmind'),
+('Rastreamento'),
+('Terra Segura');
+
+
+UPDATE projeto 
+SET nome_projet = "psiu" WHERE nome_projet = 'Lembra+';
+select nome_projet from projeto;
+
+UPDATE projeto 
+SET nome_projet = "conectart" WHERE nome_projet = 'Calmind';
+select nome_projet from projeto;
+
+UPDATE projeto 
+SET nome_projet = "Pronext" WHERE nome_projet = 'Rastreamento';
+select nome_projet from projeto;
+
+UPDATE projeto 
+SET nome_projet = "investup" WHERE nome_projet = 'Terra Segura';
+select nome_projet from projeto;
+	
+
+select * from projeto;
+
+
+
+SELECT MAX(id_funcionario) FROM funcionario; -- 10
+SELECT MIN(id_funcionario) FROM funcionario; -- 1
+SELECT AVG(id_funcionario) FROM funcionario; -- 5.5000
+SELECT SUM(id_funcionario) FROM funcionario; -- 55
+
+SELECT MAX(id_departamento) FROM departamento; -- 3
+SELECT MIN(id_departamento) FROM departamento ;-- 1
+SELECT AVG(id_departamento) FROM departamento; -- 2.0000
+SELECT SUM(id_departamento) FROM departamento; -- 6
+
+SELECT MAX(id_cliente) FROM cliente; -- 20
+SELECT MIN(id_cliente) FROM cliente ;-- 1
+SELECT AVG(id_cliente) FROM cliente; -- 
+SELECT SUM(id_cliente) FROM cliente; -- 
+
+SELECT MAX(id_projeto) FROM projeto; -- 48
+SELECT MIN(id_projeto) FROM projeto ;-- 1
+SELECT AVG(id_projeto) FROM projeto; -- 24.5000
+SELECT SUM(id_projeto) FROM projeto; -- 1176
