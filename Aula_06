@@ -2,7 +2,6 @@ SELECT nome, telefone -- inserir os campos da tabela
 AS Pessoas -- novo nome temporario
 FROM Pessoal -- nome da tabela atual
 
-
 max - maximo
 min - minimo
 avg - media 
