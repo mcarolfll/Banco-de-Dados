@@ -1,0 +1,21 @@
+SELECT nome, telefone -- inserir os campos da tabela
+AS Pessoas -- novo nome temporario
+FROM Pessoal -- nome da tabela atual
+
+
+max - maximo
+min - minimo
+avg - media 
+count - 
+sum - 
+
+SELECT MAX(id_pessoal) FROM Pessoal;
+SELECT MIN(id_pessoal) FROM Pessoal;
+SELECT AVG(id_pessoal) FROM Pessoal;
+SELECT SUM(id_pessoal) FROM Pessoal;
+☝️ Não pode dar espaço
+
+UPDATE Pessoal
+SET cpf = "002" WHERE id_pessoal = 2;
+
+select cpf from pessoal;
