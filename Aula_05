@@ -1,0 +1,46 @@
+create database banco;
+drop database bdsql;
+use banco;
+
+create table encomenda (
+id_encomenda int primary key auto_increment,
+nome_encomenda varchar (60) not null,
+dt_encomenda char (30) unique not null
+);
+
+create table cliente (
+id_cliente int primary key auto_increment,
+en_cliente varchar (255) not null,
+nm_cliente varchar(60) not null
+);
+INSERT INTO cliente (nome, endereço)
+VALUES 
+  ('Carol', 'AAA'),
+  ('Duda', 'BBB'),
+  ('Gabi', 'CCC'),
+  ('Geovana', 'DDD'),
+  ('Thays', 'EEE'),
+  ('Lucas', 'FFF'),
+  ('Italo', 'GGG'),
+  ('Adam', 'HHH'),
+  ('Arthur', 'III'),
+  ('João', 'JJJ');
+
+create table  produto (
+id_produto int primary key auto_increment,
+vl_produto varchar (200) unique not null,
+nm_produto varchar (200) not null,
+uf_produto varchar (255) not null
+);
+INSERT INTO produto (nm_produto, vl_produto, uf,produto)
+VALUES 
+  ('casa', 'R$ 1.200'),
+  ('Duda', 'BBB'),
+  ('Gabi', 'CCC'),
+  ('Geovana', 'DDD'),
+  ('Thays', 'EEE'),
+  ('Lucas', 'FFF'),
+  ('Italo', 'GGG'),
+  ('Adam', 'HHH'),
+  ('Arthur', 'III'),
+  ('João', 'JJJ');
