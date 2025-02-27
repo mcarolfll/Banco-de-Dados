@@ -112,47 +112,51 @@ update usuario
 set endereço = "bla bla" where endereço = 'Rua A, 123';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua B, 456';
+set endereço = "bla sla" where endereço = 'Rua B, 456';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua C, 789';
+set endereço = "sla bla" where endereço = 'Rua C, 789';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua D, 101';
+set endereço = "sla sla" where endereço = 'Rua D, 101';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua E, 202';
+set endereço = "AAA bla" where endereço = 'Rua E, 202';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua F, 303';
+set endereço = "BBB bla" where endereço = 'Rua F, 303';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua A, 123';
+set endereço = "CCC bla" where endereço = 'Rua G, 404';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua A, 123';
+set endereço = "DDD bla" where endereço = 'Rua A, 123';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua A, 123';
+set endereço = "EEE bla" where endereço = 'Rua H, 505';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua A, 123';
+set endereço = "FFF bla" where endereço = 'Rua I, 606';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua A, 123';
+set endereço = "GGG bla" where endereço = 'Rua J, 707';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua A, 123';
+set endereço = "HHH bla" where endereço = 'Rua K, 808';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua A, 123';
+set endereço = "III bla" where endereço = 'Rua L, 909';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua A, 123';
+set endereço = "JJJ bla" where endereço = 'Rua M, 1010';
 select endereço from usuario;
 update usuario
-set endereço = "bla bla" where endereço = 'Rua A, 123';
+set endereço = "KKK bla" where endereço = 'Rua N, 1111';
 select endereço from usuario;
+update usuario
+set endereço = "LLL bla" where endereço = 'Rua O, 1212';
+select endereço from usuario;
+
 
 
 
