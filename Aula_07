@@ -84,31 +84,80 @@ VALUES
 ('Lego Creator Expert', 'Disponível', 10045);
 
 create table produto (
-id_prod int primary key auto_increment unique,
-preco varchar(30),
-prod varchar(255)
+id_produto int primary key auto_increment unique,
+preco varchar(60),
+produto varchar(255)
 );
 
-INSERT INTO produto (nome, status, numero_pedido)
+INSERT INTO produto (produto, preco)
 VALUES 
-('iPhone 14', 'Disponível', 10001),
-('Samsung Galaxy S23', 'Disponível', 10002),
-('MacBook Pro 16"', 'Disponível', 10003),
-('AirPods Pro 2', 'Disponível', 10004),
-('Xbox Series X', 'Disponível', 10005),
-('Nintendo Switch', 'Disponível', 10006),
-('Sony 4K TV', 'Disponível', 10007),
-('Google Pixel 7', 'Disponível', 10008),
-('Sony WH-1000XM5', 'Disponível', 10009),
-('Fitbit Charge 5', 'Disponível', 10010),
-('Kindle Paperwhite', 'Disponível', 10011),
-('Razer DeathAdder V2', 'Disponível', 10012),
-('DJI Mavic Air 2', 'Disponível', 10013),
-('Bose QuietComfort 45', 'Disponível', 10014),
-('Oculus Quest 2', 'Disponível', 10015);
+('iPhone 14', 6999.99),
+('Samsung Galaxy S23', 4999.99),
+('MacBook Pro 16"', 12999.00),
+('AirPods Pro 2', 1799.00),
+('Xbox Series X', 4999.00),
+('Nintendo Switch', 2999.00),
+('Sony 4K TV', 2999.99),
+('Google Pixel 7', 4299.99),
+('Sony WH-1000XM5', 1799.99),
+('Fitbit Charge 5', 899.99),
+('Kindle Paperwhite', 499.99),
+('Razer DeathAdder V2', 399.99),
+('DJI Mavic Air 2', 6999.00),
+('Bose QuietComfort 45', 1699.00),
+('Oculus Quest 2', 2999.00);
+
+
+update usuario
+set endereço = "bla bla" where endereço = 'Rua A, 123';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua B, 456';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua C, 789';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua D, 101';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua E, 202';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua F, 303';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua A, 123';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua A, 123';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua A, 123';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua A, 123';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua A, 123';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua A, 123';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua A, 123';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua A, 123';
+select endereço from usuario;
+update usuario
+set endereço = "bla bla" where endereço = 'Rua A, 123';
+select endereço from usuario;
 
 
 
-select * from produtos;
+
+
+select * from produto;
 select*from pedido;
 select*from usuario;
