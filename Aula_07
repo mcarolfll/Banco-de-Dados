@@ -83,13 +83,13 @@ VALUES
 ('Sharp AQUOS TV', 'Disponível', 10044),
 ('Lego Creator Expert', 'Disponível', 10045);
 
-create table produto (
-id_produto int primary key auto_increment unique,
+create table produtos (
+id_prod int primary key auto_increment unique,
 preco varchar(60),
 produto varchar(255)
 );
 
-INSERT INTO produto (produto, preco)
+INSERT INTO produtos (produtos, preco)
 VALUES 
 ('iPhone 14', 6999.99),
 ('Samsung Galaxy S23', 4999.99),
@@ -158,7 +158,36 @@ set endereço = "LLL bla" where endereço = 'Rua O, 1212';
 select endereço from usuario;
 
 
-
+update produtos
+set preco = '320' where id_prod =  6999.99;
+update produtos
+set preco = '320' where id_prod =  4999.99;
+update produtos
+set preco = '320' where id_prod =  12999.00;
+update produtos
+set preco = '320' where id_prod = 1799.00;
+update produtos
+set preco = '320' where id_prod= 4999.00;
+update produtos
+set preco = '320' where id_prod = 2999.00;
+update produtos
+set preco = '320' where id_prod = 2999.99;
+update produtos
+set preco = '320' where id_prod = 2999.99;
+update produtos
+set preco = '320' where id_prod = 4299.99;
+update produtos
+set preco = '320' where id_prod = 1799.99;
+update produtos
+set preco = '320' where id_prod = 899.99;
+update produtos
+set preco = '320' where id_prod = 499.99;
+update produtos
+set preco = '320' where id_prod = 399.99;
+update produtos
+set preco = '320' where id_prod = 6999.00;
+update produtos
+set preco = '320' where id_prod = 1699.00;
 
 
 
