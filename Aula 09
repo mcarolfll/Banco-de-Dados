@@ -1,0 +1,148 @@
+create database  empresa;
+drop database empresa;
+use empresa;
+
+-- criando tabela
+create table cliente (
+id_clie int primary key auto_increment,
+nome varchar (100) not null,
+data_nascimento date,  -- data 2025/03/05
+email varchar (100) not null,
+telefone char (20) not null
+); 
+
+create table evento (
+id_even int primary key auto_increment,
+nome_even varchar (60) not null,
+data_horario date,
+local_even varchar (100) not null,
+capaci_max varchar (255)
+);
+
+create table pagamento(
+id_pag int primary key auto_increment,
+id_clie int,
+valor_pago varchar(100) not null,
+status_pag varchar (200) not null
+);
+
+create table inscricoes (
+id_ins int primary key auto_increment,
+id_clie int,
+id_even int,
+data_inscricao date,
+status_ins varchar (200) not null
+);
+
+
+alter table inscricoes add constraint id_clie foreign key(id_clie)
+references cliente(id_clie);
+alter table pagamento add constraint id_clie foreign key(id_clie)
+references cliente(id_clie);
+alter table inscricoes add constraint id_even foreign key(id_even)
+references evento(id_even);
+
+insert into cliente (nome, data_nascimento, email, telefone) values
+('João Silva', '1990-01-15', 'joao.silva@example.com', '11987654321'),
+('Maria Oliveira', '1985-05-20', 'maria.oliveira@example.com', '11987654322'),
+('Carlos Pereira', '1992-03-10', 'carlos.pereira@example.com', '11987654323'),
+('Ana Costa', '1988-07-25', 'ana.costa@example.com', '11987654324'),
+('Lucas Almeida', '1995-11-30', 'lucas.almeida@example.com', '11987654325'),
+('Fernanda Lima', '1993-02-14', 'fernanda.lima@example.com', '11987654326'),
+('Ricardo Santos', '1987-09-05', 'ricardo.santos@example.com', '11987654327'),
+('Juliana Rocha', '1991-12-12', 'juliana.rocha@example.com', '11987654328'),
+('Gabriel Martins', '1994-04-18', 'gabriel.martins@example.com', '11987654329'),
+('Patrícia Ferreira', '1986-06-22', 'patricia.ferreira@example.com', '11987654330'),
+('Eduardo Mendes', '1990-08-15', 'eduardo.mendes@example.com', '11987654331'),
+('Sofia Nascimento', '1992-10-10', 'sofia.nascimento@example.com', '11987654332'),
+('Rafael Gomes', '1989-03-03', 'rafael.gomes@example.com', '11987654333'),
+('Cláudia Dias', '1991-05-17', 'claudia.dias@example.com', '11987654334'),
+('Thiago Pires', '1984-11-11', 'thiago.pires@example.com', '11987654335');
+
+insert into evento (nome_even, data_horario, local_even, capaci_max) values
+('Tecnologia Na Area', '2023-09-15 09:00:00', 'Centro de Convenções', 200),
+('Workshop de Marketing Digital', '2023-10-05 14:00:00', 'Auditório Municipal', 100),
+('Festa de Aniversário da Empresa', '2023-11-20 18:00:00', 'Espaço Gourmet', 150),
+('Seminário de Vendas', '2023-12-10 10:00:00', 'Teatro Municipal', 300),
+('Palestra sobre Inovação', '2023-08-25 19:00:00', 'Sala de Eventos', 50);
+
+INSERT INTO Inscricoes (id_clie, id_even, data_inscricao, status_ins) VALUES
+(1, 1, '2023-08-01', 'confirmada'),
+(2, 1, '2023-08-02', 'pendente'),
+(3, 2, '2023-08-03', 'confirmada'),
+(4, 2, '2023-08-04', 'cancelada'),
+(5, 3, '2023-08-05', 'confirmada'),
+(6, 3, '2023-08-06', 'pendente'),
+(7, 4, '2023-08-07', 'confirmada'),
+(8, 4, '2023-08-08', 'cancelada'),
+(9, 5, '2023-08-09', 'confirmada'),
+(10, 5, '2023-08-10', 'pendente'),
+(1, 2, '2023-08-11', 'confirmada'),
+(2, 3, '2023-08-12', 'pendente'),
+(3, 4, '2023-08-13', 'confirmada'),
+(4, 5, '2023-08-14', 'cancelada'),
+(5, 1, '2023-08-15', 'confirmada'),
+(6, 2, '2023-08-16', 'pendente'),
+(7, 3, '2023-08-17', 'confirmada'),
+(8, 4, '2023-08-18', 'cancelada'),
+(9, 5, '2023-08-19', 'confirmada'),
+(10, 1, '2023-08-20', 'pendente'),
+(1, 3, '2023-08-21', 'confirmada'),
+(2, 4, '2023-08-22', 'pendente'),
+(3, 5, '2023-08-23', 'confirmada'),
+(4, 1, '2023-08-24', 'cancelada'),
+(5, 2, '2023-08-25', 'confirmada'),
+(6, 3, '2023-08-26', 'pendente'),
+(7, 4, '2023-08-27', 'confirmada');
+
+
+insert into pagamento(id_clie, valor_pago, status_pag)
+values
+(1, '100.00', 'Valor pago'),
+(2, '150.00', 'Valor não pago'),
+(3, '200.00', 'Valor pago'),
+(4, '250.00', 'Valor não pago'),
+(5, '300.00', 'Valor pago'),
+(6, '100.00', 'Valor pago'),
+(7, '150.00', 'Valor não pago'),
+(8, '200.00', 'Valor pago'),
+(9, '250.00', 'Valor não pago'),
+(10, '300.00', 'Valor pago'),
+(11, '100.00', 'Valor pago'),
+(12, '150.00', 'Valor não pago'),
+(13, '200.00', 'Valor pago'),
+(14, '250.00', 'Valor não pago'),
+(15, '300.00', 'Valor pago');
+
+select * from cliente
+order by nome ASC;
+
+select * from evento
+order by data_horario asc;
+
+select * from inscricoes;
+
+select * from pagamento;
+
+select c.id_clie, c.nome, c.email, c.telefone, p.valor_pago, p.status_pag
+from cliente c
+inner join pagamento p on c.id_clie = p.id_clie
+order by c.nome ASC;
+
+select c.id_clie, c.nome, c.email, c.telefone, e.nome_even, e.local_even
+from cliente c
+left join inscricoes i on c.id_clie = i.id_clie
+left join evento e on i.id_even = e.id_even
+order by c.nome ASC;
+
+select c.id_clie, c.nome, c.email, c.telefone, e.nome_even, e.local_even
+from cliente c
+right join inscricoes i on c.id_clie = i.id_clie
+right join evento e on i.id_even = e.id_even
+order by c.nome ASC;
+
+select c.id_cliente, c.nome, c.email, c.telefone, e.nome_evento, e.local_evento
+from clientes c
+cross join inscricao i on c.id_cliente = i.id_cliente
+cross join evento e on i.id_evento = e.id_evento
+order by c.nome ASC;
