@@ -157,5 +157,16 @@ insert into pagamento (id_inquilino, id_imovel, valor_pago, status_pag) values
 (47, 57, 1430.00, 'Pago'),
 (48, 58, 1200.00, 'Pago'),
 (49, 59, 1100.00, 'Pendente');
+
 select*from pagamento;
+
+select MAX(valor_pago)
+from pagamento;
+ 
+select min(valor_pago)
+from pagamento;
+ 
+select sum(valor_pago)
+from pagamento;
+
 
