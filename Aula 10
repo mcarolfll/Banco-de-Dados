@@ -163,10 +163,47 @@ select*from pagamento;
 select MAX(valor_pago)
 from pagamento;
  
-select min(valor_pago)
-from pagamento;
+ select min(valor_pago)
+ from pagamento;
  
-select sum(valor_pago)
-from pagamento;
+ select sum(valor_pago)
+ from pagamento;
+ 
 
 
+---------------- ainda vou ajeitar
+
+
+select c.id_inquilinos, c.pessoas, c.id_imoveis, e.id_contratos, e.id_proprietario, e.validacao
+from inquilinos c
+inner join contratos e on c.id_inquilinos = e.id_contratos;
+
+select i1.id_imoveis, i1.casas, i1.apartamentos, i1.comerciais, i1.locais_casa, i1.locais_apartamento, i1.locais_loja
+ from imoveis i1
+ left join imoveis i2 on i1.id_imoveis = i2.id_imoveis;
+
+ select i.id_inquilinos, i.pessoas, i.id_imoveis
+ from inquilinos i
+ right join imoveis i2 on i.id_imoveis = i2.id_imoveis;
+ 
+ select c.id_inquilinos, c.pessoas, c.id_imoveis, i.id_imoveis, i.casas, i.apartamentos, i.comerciais, i.locais_casa, i.locais_apartamento, i.locais_loja
+ from inquilinos c
+ cross join imoveis i on c.id_inquilinos = i.id_imoveis
+ 
+ delimiter $$
+ 
+ create function media_pagamentos()
+ returns float deterministic
+ begin
+ 
+ delimiter ;
+ 
+ delimiter $$
+
+ create procedure todos_proprietarios()
+ begin
+     select * from proprietario;
+ end$$
+ 
+ delimiter ;
+ 
