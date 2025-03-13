@@ -1,0 +1,161 @@
+create database  atv;
+drop database atv;
+use atv;
+drop table pagamento;
+create table imoveis(
+id_imovel int primary key auto_increment,
+casa varchar (100) not null,
+apartamento varchar (100) not null,
+comercial varchar (100) not null,
+local_casa varchar (200) not null,
+local_apartamento varchar (200) not null,
+local_comercial varchar (200) not null
+);
+create table proprietario(
+id_proprietario int primary key auto_increment,
+nome varchar (100) not null,
+telefone varchar (11) unique not null
+);
+create table inquilino(
+id_inquilino int primary key auto_increment,
+id_imovel int,
+cliente varchar (100) not null,
+telefone varchar (11) unique not null
+);
+
+create table contrato(
+id_contrato int primary key auto_increment,
+preco_casa varchar (200) not null,
+preco_apartamento varchar (200) not null,
+preco_comercial varchar (200) not null,
+data_ini date,
+data_ter date
+);
+create table pagamento(
+id_pagamento int primary key auto_increment,
+id_inquilino int,
+id_imovel int,
+valor_pago varchar(100) not null,
+status_pag varchar (200) not null
+);
+
+
+insert into imoveis (id_imovel, casa, local_casa, apartamento, local_apartamento, comercial, local_comercial) values
+(40, 'numero 1', 'Rua Jose de Alencar', 'Bloco 21, ap 302', 'Rua Casa dos Bobos', 'Supermercado XYZ', 'Avenida Brasil'),
+(41, 'numero 2', 'Avenida Paulista', 'Bloco 22, ap 305', 'Rua das Palmeiras', 'Farmácia Central', 'Rua das Acácias'),
+(42, 'numero 3', 'Rua do Sol', 'Bloco 23, ap 404', 'Rua do Sol Nascente', 'Padaria Pão de Ouro', 'Rua do Cedro'),
+(43, 'numero 4', 'Rua das Flores', 'Bloco 24, ap 101', 'Avenida Rio Branco', 'Restaurante Sabor & Cia', 'Avenida das Rosas'),
+(44, 'numero 5', 'Avenida dos Girassóis', 'Bloco 25, ap 205', 'Rua dos Lírios', 'Loja de Roupas Elegance', 'Rua das Acácias'),
+(45, 'numero 6', 'Rua da Paz', 'Bloco 26, ap 307', 'Rua da Lua', 'Academia Power Fit', 'Avenida dos Ipês'),
+(46, 'numero 7', 'Avenida Rio Branco', 'Bloco 27, ap 401', 'Rua dos Jasmins', 'Café Delícia', 'Rua do Cedro'),
+(47, 'numero 8', 'Rua das Palmeiras', 'Bloco 28, ap 208', 'Rua do Cedro', 'Escola Técnica ABC', 'Avenida das Palmeiras'),
+(48, 'numero 9', 'Rua do Cedro', 'Bloco 29, ap 102', 'Rua das Mangueiras', 'Pet Shop Animal Care', 'Rua do Sol'),
+(49, 'numero 10', 'Avenida dos Lírios', 'Bloco 30, ap 303', 'Avenida Brasil', 'Livraria Sabedoria', 'Rua das Rosas'),
+(50, 'numero 11', 'Rua das Orquídeas', 'Bloco 31, ap 205', 'Rua dos Girassóis', 'Clinica Odontológica Saúde', 'Avenida Rio Branco'),
+(51, 'numero 12', 'Avenida das Acácias', 'Bloco 32, ap 506', 'Rua da Paz', 'Posto de Combustível AutoGas', 'Avenida dos Ipês'),
+(52, 'numero 13', 'Rua do Ipê Amarelo', 'Bloco 33, ap 204', 'Rua das Palmeiras', 'Restaurante Natureza', 'Rua das Flores'),
+(53, 'numero 14', 'Rua dos Jasmins', 'Bloco 34, ap 303', 'Rua da Acácia', 'Shopping Center Premium', 'Avenida das Palmeiras'),
+(54, 'numero 15', 'Avenida dos Girassóis', 'Bloco 35, ap 404', 'Rua do Cedro', 'Loja de Móveis Casa Nova', 'Rua da Lua'),
+(55, 'numero 16', 'Rua do Sol Nascente', 'Bloco 36, ap 506', 'Rua do Cedro', 'Mercado do Bairro', 'Avenida dos Ipês'),
+(56, 'numero 17', 'Rua das Mangueiras', 'Bloco 37, ap 107', 'Rua dos Lírios', 'Bar e Restaurante Mar & Sol', 'Rua das Flores'),
+(57, 'numero 18', 'Avenida do Cruzeiro', 'Bloco 38, ap 608', 'Avenida Rio Branco', 'Centro Médico Vida', 'Rua do Sol Nascente'),
+(58, 'numero 19', 'Rua das Acácias Altas', 'Bloco 39, ap 403', 'Rua das Acácias', 'Lojas Americanas', 'Rua dos Jasmins'),
+(59, 'numero 20', 'Rua dos Girassóis', 'Bloco 40, ap 102', 'Avenida das Palmeiras', 'Supermercado Green', 'Rua das Mangueiras');
+
+select*from imoveis;
+
+insert into proprietario (nome, telefone) values
+('João Silva', '98765-4321'),
+('Maria Oliveira', '91234-5678'),
+('Carlos Souza', '98876-5432'),
+('Ana Costa', '94567-1234'),
+('Lucas Pereira', '99999-9999'),
+('Patrícia Santos', '93123-4567'),
+('Felipe Rocha', '96789-0123'),
+('Gabriela Alves', '98888-7766'),
+('Eduardo Lima', '93456-7890'),
+('Fernanda Costa', '91987-6543'),
+('Ricardo Martins', '96543-2109'),
+('Luana Fernandes', '94765-4321'),
+('Marcos Almeida', '91872-9635'),
+('Juliana Silva', '96874-2365'),
+('Rafael Oliveira', '93321-6547'),
+('Beatriz Santos', '96532-8764'),
+('Vinícius Souza', '97654-3210'),
+('Juliano Rocha', '98674-1243'),
+('Carla Lima', '93124-5678'),
+('Pedro Costa', '93987-2134');
+
+select*from proprietario;
+
+insert into inquilino (id_imovel, cliente, telefone) values
+(40, 'Lucas Andrade', '97321-8765'),
+(41, 'Camila Barbosa', '92987-6543'),
+(42, 'Felipe Souza', '91123-4567'),
+(43, 'Beatriz Martins', '97532-0987'),
+(44, 'Gabriel Costa', '96345-6789'),
+(45, 'Amanda Oliveira', '92034-5678'),
+(46, 'Rodrigo Almeida', '97756-4321'),
+(47, 'Viviane Rocha', '91678-2345'),
+(48, 'Tiago Pereira', '93122-3344'),
+(49, 'Marcela Lima', '94455-1234'),
+(50, 'Juliana Costa', '98653-7890'),
+(51, 'José Oliveira', '91765-4321'),
+(52, 'Vanessa Martins', '92547-8910'),
+(53, 'Igor Lima', '93012-6543'),
+(54, 'Paula Silva', '94687-3210'),
+(55, 'Rafael Santos', '93876-5432'),
+(56, 'Renata Rocha', '92345-6789'),
+(57, 'Cláudia Almeida', '97234-5678'),
+(58, 'Fernando Pereira', '96123-8765'),
+(59, 'Isabela Costa', '95012-3456');
+
+select*from inquilino;
+
+insert into contrato (preco_casa, preco_apartamento, preco_comercial, data_ini, data_ter) values
+(150000.00, 1200.00, 2500.00, '2023-01-15', '2024-01-15'),
+(200000.00, 1400.00, 3000.00, '2023-03-10', '2024-03-10'),
+(175000.00, 1300.00, 2800.00, '2023-05-05', '2024-05-05'),
+(225000.00, 1600.00, 3200.00, '2023-07-01', '2024-07-01'),
+(180000.00, 1350.00, 2900.00, '2023-08-12', '2024-08-12'),
+(210000.00, 1500.00, 3100.00, '2023-09-20', '2024-09-20'),
+(160000.00, 1250.00, 2700.00, '2023-11-05', '2024-11-05'),
+(240000.00, 1700.00, 3400.00, '2024-01-10', '2025-01-10'),
+(190000.00, 1450.00, 3000.00, '2024-02-15', '2025-02-15'),
+(220000.00, 1550.00, 3300.00, '2024-03-01', '2025-03-01'),
+(250000.00, 1750.00, 3500.00, '2024-04-10', '2025-04-10'),
+(185000.00, 1400.00, 2800.00, '2024-05-20', '2025-05-20'),
+(170000.00, 1200.00, 2600.00, '2024-06-01', '2025-06-01'),
+(200000.00, 1300.00, 3100.00, '2024-07-15', '2025-07-15'),
+(230000.00, 1600.00, 3200.00, '2024-08-05', '2025-08-05'),
+(160000.00, 1150.00, 2500.00, '2024-09-01', '2025-09-01'),
+(210000.00, 1400.00, 3000.00, '2024-10-10', '2025-10-10'),
+(180000.00, 1250.00, 2700.00, '2024-11-01', '2025-11-01'),
+(220000.00, 1500.00, 3300.00, '2025-01-05', '2026-01-05'),
+(240000.00, 1650.00, 3400.00, '2025-02-01', '2026-02-01');
+
+select*from contrato;
+
+insert into pagamento (id_inquilino, id_imovel, valor_pago, status_pag) values
+(30, 40, 1200.00, 'Pago'),
+(31, 41, 1350.00, 'Pendente'),
+(32, 42, 1100.00, 'Pago'),
+(33, 43, 1400.00, 'Pago'),
+(34, 44, 1250.00, 'Pendente'),
+(35, 45, 1300.00, 'Pago'),
+(36, 46, 1450.00, 'Pago'),
+(37, 47, 1150.00, 'Pendente'),
+(38, 48, 1380.00, 'Pago'),
+(39, 49, 1220.00, 'Pago'),
+(40, 50, 1500.00, 'Pendente'),
+(41, 51, 1275.00, 'Pago'),
+(42, 52, 1190.00, 'Pago'),
+(43, 53, 1325.00, 'Pendente'),
+(44, 54, 1400.00, 'Pago'),
+(45, 55, 1350.00, 'Pago'),
+(46, 56, 1250.00, 'Pendente'),
+(47, 57, 1430.00, 'Pago'),
+(48, 58, 1200.00, 'Pago'),
+(49, 59, 1100.00, 'Pendente');
+select*from pagamento;
+
