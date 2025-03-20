@@ -1,8 +1,7 @@
 create database atv;
-drop database atv;
+-- drop database atv;
 use atv;
-drop table medico;
-drop tablr 
+
 
 create table paciente(
 id_paciente int primary key auto_increment,
@@ -10,6 +9,14 @@ nome_paci varchar (50) not null,
 idade int,
 telefone varchar (12) unique not null
 );
+-- Dados Paciente
+insert into paciente ( nome_paci, idade, telefone) values
+('Carlos Pereira', 35, '9876-5432'),
+('Juliana Martins', 28, '8765-4321'),
+('Lucas Santos', 40, '7654-3210'),
+('Fernanda Lima', 33, '6543-2109'),
+('Gabriela Rocha', 25, '5432-1098');
+
 
 create table medico(
 id_medico int primary key auto_increment,
@@ -18,77 +25,89 @@ id_setor int,
 especialidade varchar (60) not null
 );
 
+-- Dados Medico
+
+insert into medico (nome_med, id_setor, especialidade) values
+('João Silva', 2, 'Cardiologia'),
+('Maria Oliveira', 3, 'Dermatologia'),
+('Pedro Souza', 1, 'Ortopedia'),
+('Ana Costa', 2, 'Pediatria'),
+('Ricardo Almeida', 3, 'Neurologia');
+
+
+create table consulta(
+id_consulta int primary key auto_increment unique,
+dados varchar(255)
+);
+alter table consulta add column id_paciente int;
+
+alter table consulta add column id_medico int;
+
+alter table consulta add constraint id_paciente foreign key (id_paciente) references paciente(id_paciente);
+
+alter table consulta add constraint id_medico foreign key (id_medico) references medico(id_medico);
+
+
+insert into consulta ( dados, id_paciente, id_medico) values
+('consulta para dr João Silva', 1, 1),
+('consulta para dr Maria Oliveira', 2, 1),
+('consulta para dr Pedro Souza', 3, 3),
+('consulta para dr Ana Costa', 4, 2),
+('consulta para dr Ricardo Almeida', 5, 1);
+
+
 create table unidade (
 id_unidade int primary key auto_increment,
 nome_uni varchar (70) not null,
 lugar varchar (255) not null
 );
+-- Dados Unidade
+
+insert into unidade (nome_uni, lugar) value
+('Unidade Centro', 'Rua Central, 100'),
+('Unidade Norte', 'Avenida das Flores, 250'),
+('Unidade Sul', 'Praça das Palmeiras, 75'),
+('Unidade Leste', 'Rua do Sol, 500'),
+('Unidade Oeste', 'Avenida Brasil, 800');
 
 create table setor (
-id_setor int primary key ,
+id_setor int primary key auto_increment ,
 nome_set varchar(60) not null,
 local_set varchar (255) not null
 
 );
 
-create table consulta(
-id_consulta int primary key auto_increment unique,
-dados varchar(255),
-id_transferencia int
+
+-- Dados Setor
+insert into setor (nome_set,local_set) value
+( 'Cardiologia', 'Bloco A, 1º Andar'),
+( 'Dermatologia', 'Bloco B, 2º Andar'),
+( 'Ortopedia', 'Bloco C, 3º Andar'),
+('Pediatria', 'Bloco D, 4º Andar'),
+('Neurologia', 'Bloco E, 5º Andar');
+
+
+
+create table transferencia(
+id_trans int primary key auto_increment
 );
 
-create table transferencia (
-id_transferencia int primary key ,
-id_setor int,
-id_paciente int
-);
+
+alter table transferencia add column fk_id_paciente int;
+alter table transferencia add column fk_id_medico int;
 
 
-alter table transferencia add constraint id_setor foreign key (id_setor) references setor(id_setor);
-alter table transferencia add constraint id_paciente foreign key (id_paciente) references paciente(id_paciente);
-alter table consulta add constraint id_transferencia foreign key(id_transferencia) references transferencia(id_transferencia);
 
-insert into transferencia (id_transferencia, id_setor, id_paciente) values 
-(1, 2, 3),
-(2, 3, 4),
-(3, 1, 5),
-(4, 2, 6),
-(5, 3, 7);
+alter table transferencia add constraint fk_id_medico foreign key (fk_id_medico) references medico(id_medico);
 
-insert into consulta (id_consulta, dados, id_transferencia) values
-(18, 'consulta para dr João Silva', 1),
-(19, 'consulta para dr Maria Oliveira', 2),
-(20, 'consulta para dr Pedro Souza', 3),
-(21, 'consulta para dr Ana Costa', 4),
-(22, 'consulta para dr Ricardo Almeida', 5);
 
-insert into paciente (id_paciente, nome_paci, idade, telefone) values 
-(3, 'Carlos Pereira', 35, '9876-5432'),
-(4, 'Juliana Martins', 28, '8765-4321'),
-(5, 'Lucas Santos', 40, '7654-3210'),
-(6, 'Fernanda Lima', 33, '6543-2109'),
-(7, 'Gabriela Rocha', 25, '5432-1098');
+alter table transferencia add constraint fk_id_paciente foreign key (fk_id_paciente) references paciente(id_paciente);
 
-insert into medico (id_medico, nome_med, id_setor, especialidade) values 
-(13, 'João Silva', 2, 'Cardiologia'),
-(14, 'Maria Oliveira', 3, 'Dermatologia'),
-(15, 'Pedro Souza', 1, 'Ortopedia'),
-(16, 'Ana Costa', 2, 'Pediatria'),
-(17, 'Ricardo Almeida', 3, 'Neurologia');
+insert into transferencia( fk_id_medico, fk_id_paciente) values(1, 1),
+(1,3),
+(3,2);
 
-insert into setor (id_setor, nome_set,local_set) value
-(2, 'Cardiologia', 'Bloco A, 1º Andar'),
-(3, 'Dermatologia', 'Bloco B, 2º Andar'),
-(1, 'Ortopedia', 'Bloco C, 3º Andar'),
-(2, 'Pediatria', 'Bloco D, 4º Andar'),
-(3, 'Neurologia', 'Bloco E, 5º Andar');
-
-insert into unidade (id_unidade,nome_uni, lugar) value
-(8, 'Unidade Centro', 'Rua Central, 100'),
-(9, 'Unidade Norte', 'Avenida das Flores, 250'),
-(10, 'Unidade Sul', 'Praça das Palmeiras, 75'),
-(11, 'Unidade Leste', 'Rua do Sol, 500'),
-(12, 'Unidade Oeste', 'Avenida Brasil, 800');
+select * from transferencia;
 
 select * from transferencia;
 select * from consulta;
@@ -106,10 +125,9 @@ delimiter $$
 
 create procedure todos_medicos()
 begin
-    select * from medico;
+select * from medico;
 end$$
 
 delimiter ;
 
 call todos_medicos();
-
