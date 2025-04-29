@@ -1,0 +1,122 @@
+create database validar;
+ drop database validar;
+ use validar;
+ 
+ CREATE TABLE CPF(
+id INT NOT NULL AUTO_INCREMENT,
+CPF VARCHAR(11) NOT NULL,
+PRIMARY KEY (id)
+);
+
+INSERT INTO CPF (CPF) VALUES ('75392083099');
+INSERT INTO CPF (CPF) VALUES ('75392081099');
+INSERT INTO CPF (CPF) VALUES ('31804409022');
+INSERT INTO CPF (CPF) VALUES ('31804409021');
+INSERT INTO CPF (CPF) VALUES ('17387354006');
+INSERT INTO CPF (CPF) VALUES ('27387354006');
+
+-- função, para poder reaproveitar esta lógica no futuro
+
+DELIMITER $
+
+CREATE FUNCTION validar_CPF(CPF CHAR(11))
+RETURNS INT
+DETERMINISTIC
+NO SQL
+BEGIN
+    DECLARE SOMA INT;
+    DECLARE INDICE INT;
+    DECLARE DIGITO_1 INT;
+    DECLARE DIGITO_2 INT;
+    DECLARE NR_DOCUMENTO_AUX VARCHAR(11);
+    DECLARE DIGITO_1_CPF CHAR(2);
+    DECLARE DIGITO_2_CPF CHAR(2);
+
+    SET NR_DOCUMENTO_AUX = LTRIM(RTRIM(CPF));
+
+    IF (NR_DOCUMENTO_AUX IN ('00000000000', '11111111111', '22222222222',
+                             '33333333333', '44444444444', '55555555555',
+                             '66666666666', '77777777777', '88888888888',
+                             '99999999999', '12345678909')) THEN
+        RETURN 0;
+    END IF;
+
+    IF (LENGTH(NR_DOCUMENTO_AUX) <> 11) THEN
+        RETURN 0;
+    ELSE
+        SET DIGITO_1_CPF = SUBSTRING(NR_DOCUMENTO_AUX,LENGTH(NR_DOCUMENTO_AUX)-1,1);
+        SET DIGITO_2_CPF = SUBSTRING(NR_DOCUMENTO_AUX,LENGTH(NR_DOCUMENTO_AUX),1);
+
+        SET SOMA = 0;
+        SET INDICE = 1;
+        WHILE (INDICE <= 9) DO          
+            SET Soma = Soma + CAST(SUBSTRING(NR_DOCUMENTO_AUX,INDICE,1) AS UNSIGNED) * (11 - INDICE);            
+            SET INDICE = INDICE + 1;      
+        END WHILE;      
+        SET DIGITO_1 = 11 - (SOMA % 11);      
+        IF (DIGITO_1 > 9) THEN
+            SET DIGITO_1 = 0;
+        END IF;
+
+        SET SOMA = 0;
+        SET INDICE = 1;
+        WHILE (INDICE <= 10) DO
+            SET Soma = Soma + CAST(SUBSTRING(NR_DOCUMENTO_AUX,INDICE,1) AS UNSIGNED) * (12 - INDICE);              
+            SET INDICE = INDICE + 1;
+        END WHILE;
+        SET DIGITO_2 = 11 - (SOMA % 11);
+        IF DIGITO_2 > 9 THEN
+            SET DIGITO_2 = 0;
+        END IF;
+
+        IF (DIGITO_1 = DIGITO_1_CPF) AND (DIGITO_2 = DIGITO_2_CPF) THEN
+            RETURN 1;
+        ELSE
+            RETURN 0;
+        END IF;
+    END IF;
+END;
+$
+DELIMITER ;
+
+SELECT CPF, validar_CPF(CPF) as resultado FROM CPF;
+select CPF from CPF where validar_CPF(CPF) = 1;
+
+-- Se quiser deixar ainda mais fácil de entender visualmente
+SELECT CPF,
+       CASE WHEN validar_CPF(CPF) = 1 THEN 'Válido' ELSE 'Inválido' END AS status
+FROM CPF;
+
+--  Vamos adicionar uma nova coluna na tabela CPF chamada status, e depois
+--  usar um UPDATE para preenchê-la com "Válido" ou "Inválido", conforme o resultado da função validar_CPF
+ALTER TABLE CPF ADD COLUMN status VARCHAR(10);
+
+-- Atualizar a coluna status com base na função validar_CPF
+UPDATE CPF
+SET status = CASE
+                WHEN validar_CPF(CPF) = 1 THEN 'Válido'
+                ELSE 'Inválido'
+             END;
+
+
+-- Safe Update
+-- O MySQL Workbench está impedindo você de fazer um UPDATE que afeta toda a tabela,
+-- sem uma cláusula WHERE com uma chave primária (ou seja, sem segurança de que não vai atualizar mais do que deveria)
+
+-- Temporariamente desativar o modo seguro na sessão atual
+SET SQL_SAFE_UPDATES = 0;
+
+-- Para Reativar
+SET SQL_SAFE_UPDATES = 1;
+
+-- Adicionar WHERE com a chave primária (coluna id)
+UPDATE CPF
+SET status = CASE
+                WHEN validar_CPF(CPF) = 1 THEN 'Válido'
+                ELSE 'Inválido'
+            END
+WHERE id > 0;
+
+
+-- Selecionando tudo
+SELECT * FROM CPF;
